@@ -9,6 +9,7 @@ public class App {
         d1.partOne();
         d1.partTwo();*/
         DayTwo d2 = new DayTwo();
-        d2.plannedCourse();
+        d2.partOne();
+        d2.partTwo();
     }
 }

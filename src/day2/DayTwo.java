@@ -10,10 +10,38 @@ import java.util.List;
 
 public class DayTwo {
 
+    private final String FORWARD = "forward";
+    private final String DOWN = "down";
+    private final String UP = "up";
 
-    public void plannedCourse() {
+
+    public void partOne() {
         List<String> inputList = inputToList();
-        System.out.println(inputList.size());
+        int hPos = 0;
+        int depth = 0;
+        for (String current : inputList) {
+            String[] helper = current.split(" ");
+            String level = helper[0];
+            int value = Integer.parseInt(helper[1]);
+
+            switch (level) {
+                case DOWN -> {
+                    depth += value;
+                }
+                case UP -> {
+                    depth -= value;
+                }
+                default -> {
+                    hPos += value;
+                }
+            }
+        }
+        int result = hPos * depth;
+        System.out.println("Part One -> " + result);
+    }
+
+    public void partTwo() {
+        List<String> inputList = inputToList();
         int hPos = 0;
         int depth = 0;
         int aim = 0;
@@ -21,28 +49,22 @@ public class DayTwo {
             String[] helper = current.split(" ");
             String level = helper[0];
             int value = Integer.parseInt(helper[1]);
-            final String FORWARD = "forward";
-            final String DOWN = "down";
-            final String UP = "up";
+
             switch (level) {
                 case DOWN -> {
-                    depth += value;
                     aim += value;
                 }
                 case UP -> {
-                    depth -= value;
                     aim -= value;
                 }
-                case FORWARD -> {
+                default -> {
                     hPos += value;
                     depth += aim * value;
-                    //System.out.println(level + " " + value + "-" + " H->" + hPos + " D->" + depth + " A->" + aim);
                 }
             }
         }
-        System.out.println(hPos + " " + depth);
         int result = hPos * depth;
-        System.out.println(result);
+        System.out.println("Part Two -> " + result);
     }
 
     private List<String> inputToList() {
