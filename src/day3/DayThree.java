@@ -6,7 +6,7 @@ import java.util.List;
 
 public class DayThree {
 
-    private List<String> inputList = AdventUtil.inputToListOfString(AdventUtil.DAY3_PATH);
+    private List<String> inputList = AdventUtil.inputToListOfString(AdventUtil.FILE_THREE.getPath());
 
     public void partOne() {
         StringBuilder gammaRate = new StringBuilder();

@@ -9,7 +9,7 @@ public class DayTwo {
     private final String FORWARD = "forward";
     private final String DOWN = "down";
     private final String UP = "up";
-    private final List<String> inputList = AdventUtil.inputToListOfString(AdventUtil.DAY2_PATH);
+    private final List<String> inputList = AdventUtil.inputToListOfString(AdventUtil.FILE_TWO.getPath());
 
 
     public void partOne() {

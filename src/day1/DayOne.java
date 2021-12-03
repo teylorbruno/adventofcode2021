@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DayOne {
 
-    private final List<Integer> inputList = AdventUtil.inputToListOfInteger(AdventUtil.DAY1_PATH);
+    private final List<Integer> inputList = AdventUtil.inputToListOfInteger(AdventUtil.FILE_ONE.getPath());
 
 
     public int partOne() {

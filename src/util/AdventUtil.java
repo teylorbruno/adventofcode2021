@@ -1,6 +1,7 @@
 package util;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,9 +9,9 @@ import java.util.List;
 
 public class AdventUtil {
 
-    public static final String DAY1_PATH = "C:\\Users\\bruno.domingues\\IdeaProjects\\adventOfCode2021\\src\\day1\\input.txt";
-    public static final String DAY2_PATH = "C:\\Users\\bruno.domingues\\IdeaProjects\\adventOfCode2021\\src\\day2\\input.txt";
-    public static final String DAY3_PATH = "C:\\Users\\bruno.domingues\\IdeaProjects\\adventOfCode2021\\src\\day3\\input.txt";
+    public static File FILE_ONE = new File("src/day1/input.txt");
+    public static final File FILE_TWO = new File("src/day2/input.txt");
+    public static final File FILE_THREE = new File("src/day3/input.txt");
 
 
     /**
