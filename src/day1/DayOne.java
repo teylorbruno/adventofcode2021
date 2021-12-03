@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DayOne {
 
-    private final List<Integer> inputList = inputToList();
+    private final List<Integer> inputList = AdventUtil.inputToListOfInteger(AdventUtil.DAY1_PATH);
 
 
     public int partOne() {
@@ -43,22 +43,4 @@ public class DayOne {
         return count;
     }
 
-    /**
-     * Creates List from the input file
-     *
-     * @return List of Integers
-     */
-    private List<Integer> inputToList() {
-        List<Integer> inputList = null;
-        try (BufferedReader bReader = new BufferedReader(new FileReader(AdventUtil.DAY1_PATH))) {
-            inputList = new ArrayList<>();
-            String line = "";
-            while ((line = bReader.readLine()) != null) {
-                inputList.add(Integer.valueOf(line));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return inputList;
-    }
 }
