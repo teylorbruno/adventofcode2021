@@ -8,7 +8,9 @@ import java.util.stream.Collectors;
 public class DayFour {
 
 
+    public static final int MINUS_ONE = -1;
     private List<String> inputList = AdventUtil.inputToListOfString(AdventUtil.FILE_FOUR.getPath());
+    private int countLast = 0;
 
     public void partOne() {
         List<String[]> boards = splitList();
@@ -16,19 +18,16 @@ public class DayFour {
         System.out.println(randomNums);
 
         Map<Integer, List<int[]>> cardsMap = getIntegerListMap(boards);
-        searchForThewinningBoard(cardsMap, randomNums);
+        //searchForThewinningBoard(cardsMap, randomNums);
         searchForTheLastBoard(cardsMap, randomNums);
     }
 
     private void searchForTheLastBoard(Map<Integer, List<int[]>> cardsMap, List<Integer> randomNums) {
         int[][][] winner = new int[cardsMap.values().size()][5][5];
-        //change 0 intial value to -1
         initializeArray(winner);
-        String numbersTaken = "";
-        int numberOfSquares = cardsMap.size() * cardsMap.get(0).size() * cardsMap.get(0).get(0).length;
+        Map<Integer, int[][]> lastCard = new HashMap<>();
         for (int randomNum : randomNums) {
-            int minusOnes = 0;
-            System.out.println(randomNum);
+            countLast = 0;
             for (int i = 0; i < cardsMap.values().size(); i++) {
                 List<int[]> arrList = cardsMap.get(i);
                 for (int j = 0; j < arrList.size(); j++) {
@@ -38,16 +37,59 @@ public class DayFour {
                         if (randomNum == currentNum) {
                             winner[i][j][k] = currentNum;
                         }
-                        //minusOnes = countMinusOnes();
+                        if (checkRow(winner[i][j]) || checkColumn(winner[i], k)) {
+                            if (!lastCard.containsKey(i)) {
+                                lastCard.put(i, winner[i]);
+                                System.out.println(Arrays.deepToString(winner[i]));
+                                if (lastCard.size() == cardsMap.size()) {
+                                    System.out.println(sumNumbers(cardsMap.get(i), winner[i]) * randomNum);
+                                    return;
+                                }
+                            }
+                        }
                     }
                 }
-                System.out.println(i + " " + Arrays.deepToString(winner[i]) + " " + numbersTaken);
             }
         }
     }
 
-    private void searchForThewinningBoard(Map<Integer, List<int[]>> cardsMap, List<Integer> randomNums) {
-        int[][][] winner = new int[cardsMap.values().size()][5][5];
+    private boolean checkcard(int[][] card) {
+        boolean hasRow = false;
+        boolean hasColumn = false;
+        for (int[] row : card) {
+            hasRow = checkRow(row);
+            if (hasRow) {
+                countLast++;
+                return hasRow;
+            }
+        }
+        for (int i = 0; i < card.length; i++) {
+            hasColumn = checkColumn(card, i);
+            if (hasColumn) {
+                countLast++;
+                return hasColumn;
+            }
+        }
+        return false;
+    }
+
+
+    private int countMinusOnes(int[][][] current, int numOfSquares) {
+        int result = 0;
+        for (int[][] arr : current)
+            for (int[] row : arr) {
+                for (int num : row) {
+                    if (num == MINUS_ONE) {
+                        result++;
+                    }
+                }
+            }
+        return result;
+    }
+
+    private void searchForTheWinningBoard(Map<Integer, List<int[]>> cardsMap, List<Integer> randomNums) {
+        int mapSize = cardsMap.values().size();
+        int[][][] winner = new int[mapSize][5][5];
         //change 0 intial value to -1
         initializeArray(winner);
         String numbersTaken = "";
@@ -64,7 +106,6 @@ public class DayFour {
                         boolean checkRow = checkRow(winner[i][j]);
                         boolean checkColumn = checkColumn(winner[i], k);
                         if (checkColumn || checkRow) {
-                            int[] win = checkColumn ? winner[i][k] : winner[i][j];
                             int sum = sumNumbers(cardsMap.get(i), winner[i]);
                             System.out.println(sum * currentNum);
                             return;
@@ -77,12 +118,26 @@ public class DayFour {
         }
     }
 
+    private int sum(List<int[]> card, int[][] winArr) {
+        int sum = 0;
+        for (int i = 0; i < card.size(); i++) {
+            int[] current = card.get(i);
+            for (int j = 0; j < current.length; j++) {
+                if (winArr[i][j] == MINUS_ONE) {
+                    continue;
+                }
+                sum += card.get(i)[j];
+            }
+        }
+        return sum;
+    }
+
     private int sumNumbers(List<int[]> card, int[][] winArr) {
         int sum = 0;
         for (int i = 0; i < card.size(); i++) {
             int[] current = card.get(i);
             for (int j = 0; j < current.length; j++) {
-                if (winArr[i][j] != -1) {
+                if (winArr[i][j] != MINUS_ONE) {
                     continue;
                 }
                 sum += card.get(i)[j];
@@ -96,7 +151,7 @@ public class DayFour {
             int[][] arrList = winner[i];
             for (int j = 0; j < arrList.length; j++) {
                 int[] current = arrList[j];
-                Arrays.fill(current, -1);
+                Arrays.fill(current, MINUS_ONE);
             }
         }
     }
@@ -104,27 +159,27 @@ public class DayFour {
     private boolean checkRow(int[] arr) {
         int count = 0;
         for (int num : arr) {
-            if (num != -1) {
+            if (num != MINUS_ONE) {
                 count++;
             }
-            if (count == 5) {
+            if (count == arr.length) {
                 break;
             }
         }
-        return count == 5;
+        return count == arr.length;
     }
 
     private boolean checkColumn(int[][] arr, int column) {
         int count = 0;
         for (int[] row : arr) {
-            if (row[column] != -1) {
+            if (row[column] != MINUS_ONE) {
                 count++;
             }
-            if (count == 5) {
+            if (count == arr.length) {
                 break;
             }
         }
-        return count == 5;
+        return count == arr.length;
     }
 
     private List<String[]> splitList() {
