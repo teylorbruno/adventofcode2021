@@ -1,10 +1,7 @@
-package day1;
+package twentytwentyone.day1;
 
 import util.AdventUtil;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

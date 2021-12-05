@@ -1,4 +1,4 @@
-package day3;
+package twentytwentyone.day3;
 
 import util.AdventUtil;
 
@@ -35,13 +35,11 @@ public class DayThree {
                 epsilonRate.append(1);
             }
         }
-        System.out.println(Integer.valueOf(gammaRate.toString(), 2) * Integer.valueOf(epsilonRate.toString(), 2));
+        System.out.println("Day 3: Part One -> " + Integer.valueOf(gammaRate.toString(), 2) * Integer.valueOf(epsilonRate.toString(), 2));
     }
 
     public void partTwo() {
         int lengthOfEachString = inputList.get(0).length();
-        String O2Rating, CO2Rating;
-        int countOnes, countZeros;
         Map<Integer, List<String>> map = determineOnesAndZeroLists(inputList, 0);
         Map<Integer, List<String>> O2Map = getO2(lengthOfEachString, map);
         Map<Integer, List<String>> CO2Map = getCO2(lengthOfEachString, map);
@@ -60,7 +58,7 @@ public class DayThree {
                 co2 = Integer.parseInt(list.get(0),2);
             }
         }
-        System.out.println(o2 * co2);
+        System.out.println("Day 3: Part Two -> " + o2 * co2);
     }
 
     private Map<Integer, List<String>> getCO2(int lengthOfEachString, Map<Integer, List<String>> map) {

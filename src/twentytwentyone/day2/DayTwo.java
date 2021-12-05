@@ -1,4 +1,4 @@
-package day2;
+package twentytwentyone.day2;
 
 import util.AdventUtil;
 
