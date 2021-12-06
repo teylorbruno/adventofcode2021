@@ -1,6 +1,7 @@
 import twentytwenty.firstday.DayOne;
 import twentytwentyone.day3.DayThree;
 import twentytwentyone.day4.DayFour;
+import twentytwentyone.day5.DayFive;
 
 public class App {
 
@@ -28,7 +29,13 @@ public class App {
         //d3.partTwo();
 
         //Day 4
-        DayFour d4 = new DayFour();
-        d4.partOne();
+        //DayFour d4 = new DayFour();
+        //d4.partOne();
+
+        //Day 5
+        DayFive d5 = new DayFive();
+        d5.partOne();
+
+
     }
 }
