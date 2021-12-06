@@ -1,7 +1,4 @@
-import twentytwenty.firstday.DayOne;
-import twentytwentyone.day3.DayThree;
-import twentytwentyone.day4.DayFour;
-import twentytwentyone.day5.DayFive;
+import twentytwentyone.day6.DaySix;
 
 public class App {
 
@@ -33,9 +30,12 @@ public class App {
         //d4.partOne();
 
         //Day 5
-        DayFive d5 = new DayFive();
-        d5.partOne();
+        //DayFive d5 = new DayFive();
+        //d5.partOne();
 
+        //Day 6
+        DaySix d6 = new DaySix();
+        d6.partOne();
 
     }
 }

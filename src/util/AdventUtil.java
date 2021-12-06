@@ -2,15 +2,13 @@ package util;
 
 import twentytwentyone.day5.Coord;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class AdventUtil {
 
@@ -22,6 +20,7 @@ public class AdventUtil {
     public static final File FILE_THREE = new File(SRC_PATH + "day3/input.txt");
     public static final File FILE_FOUR = new File(SRC_PATH + "day4/input.txt");
     public static final String FILE_FIVE = SRC_PATH + "day5/input.txt";
+    public static final String FILE_SIX = SRC_PATH + "day6/input.txt";
 
     //2020
     public static final File FILE_ONE_2020 = new File("src/twentytwenty/firstday/input.txt");
@@ -124,11 +123,24 @@ public class AdventUtil {
     }
 
     public static String[][] dotTable(Coord coord) {
-        String[][] table = new String[coord.getY2()-coord.getY1()+1][coord.getX2()-coord.getX1()+1];
+        String[][] table = new String[coord.getY2() - coord.getY1() + 1][coord.getX2() - coord.getX1() + 1];
         for (int y = 0; y < table.length; y++) {
             Arrays.fill(table[y], ".");
         }
         return table;
+    }
+
+    public static List<Integer> stringToIntegerList(String path) {
+        StringBuilder result = new StringBuilder();
+        try (BufferedReader bReader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = bReader.readLine()) != null) {
+                result.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return Arrays.stream(result.toString().split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
 
 }
