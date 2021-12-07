@@ -15,7 +15,12 @@ public class DaySeven {
         for (int i = 0; i < crabsPositionsList.size(); i++) {
             int value = 0;
             for (Integer crab : crabsPositionsList) {
-                value += Math.abs(crab - i);
+                int dif = Math.abs(crab - i);
+                int helper = 0;
+                for (int j = 1; j <= dif; j++) {
+                    helper += j;
+                }
+                value += helper;
             }
             fuelMap.put(i, value);
         }
