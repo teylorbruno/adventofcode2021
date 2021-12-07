@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="adventOfCode:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/adventOfCode_jar</output-path>
+    <root id="archive" name="adventOfCode.jar">
+      <element id="module-output" name="adventOfCode" />
+    </root>
+  </artifact>
+</component>

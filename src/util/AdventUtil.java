@@ -2,7 +2,10 @@ package util;
 
 import twentytwentyone.day5.Coord;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +24,7 @@ public class AdventUtil {
     public static final File FILE_FOUR = new File(SRC_PATH + "day4/input.txt");
     public static final String FILE_FIVE = SRC_PATH + "day5/input.txt";
     public static final String FILE_SIX = SRC_PATH + "day6/input.txt";
+    public static final String FILE_SEVEN = SRC_PATH + "day7/input.txt";
 
     //2020
     public static final File FILE_ONE_2020 = new File("src/twentytwenty/firstday/input.txt");
@@ -142,5 +146,4 @@ public class AdventUtil {
         }
         return Arrays.stream(result.toString().split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
-
 }
