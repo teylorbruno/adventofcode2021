@@ -1,4 +1,4 @@
-import twentytwentyone.day6.DaySix;
+import twentytwentyone.day8.DayEight;
 
 public class App {
 
@@ -34,12 +34,16 @@ public class App {
         //d5.partOne();
 
         //Day 6
-        DaySix d6 = new DaySix();
-        d6.result();
+        //DaySix d6 = new DaySix();
+        //d6.result();
 
         //Day 7
         //DaySeven d7 = new DaySeven();
         //d7.partOne();
 
+        //Day 8
+        DayEight d8 = new DayEight();
+        //d8.partOne();
+        d8.partTwo();
     }
 }

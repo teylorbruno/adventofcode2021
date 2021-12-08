@@ -1,14 +1,13 @@
 package util;
 
 import twentytwentyone.day5.Coord;
+import twentytwentyone.day8.Display;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -25,6 +24,7 @@ public class AdventUtil {
     public static final String FILE_FIVE = SRC_PATH + "day5/input.txt";
     public static final String FILE_SIX = SRC_PATH + "day6/input.txt";
     public static final String FILE_SEVEN = SRC_PATH + "day7/input.txt";
+    public static final String FILE_EIGHT = SRC_PATH + "day8/input.txt";
 
     //2020
     public static final File FILE_ONE_2020 = new File("src/twentytwenty/firstday/input.txt");
@@ -146,4 +146,35 @@ public class AdventUtil {
         }
         return Arrays.stream(result.toString().split(",")).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public static List<Display> inputToDisplayList(String path) {
+        List<Display> displayList = new ArrayList<>();
+        try (BufferedReader bReader = new BufferedReader(new FileReader(path))) {
+            String line;
+            while ((line = bReader.readLine()) != null) {
+                List<String> pattern = new ArrayList<>();
+                List<String> digit = new ArrayList<>();
+                boolean separator = false;
+                String[] lineArr = line.split(" ");
+                for (String word : lineArr) {
+                    char[] aux = word.toCharArray();
+                    Arrays.sort(aux);
+                    if (word.equals("|")) {
+                        separator = true;
+                        continue;
+                    }
+                    if (separator) {
+                        digit.add(String.valueOf(aux));
+                    } else {
+                        pattern.add(String.valueOf(aux));
+                    }
+                }
+                displayList.add(new Display(pattern,digit));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return displayList;
+    }
+
 }
