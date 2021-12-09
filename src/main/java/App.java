@@ -49,7 +49,7 @@ public class App {
 
         //Day 9
         DayNine d9 = new DayNine();
-        //d8.partOne();
         d9.partOne();
+        d9.partTwo();
     }
 }

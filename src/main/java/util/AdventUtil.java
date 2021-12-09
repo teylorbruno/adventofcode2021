@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class AdventUtil {
 
-    private static final String SRC_PATH = "src/twentytwentyone/";
+    private static final String SRC_PATH = "src/main/java/twentytwentyone/";
 
     //2021
     public static File FILE_ONE = new File(SRC_PATH + "day1/input.txt");
