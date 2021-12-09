@@ -9,7 +9,7 @@ import java.util.Map;
 public class DaySix {
 
     public static final int MAX_DAYS = 256;
-    List<Integer> inputList = AdventUtil.stringToIntegerList(AdventUtil.FILE_SIX);
+    List<Integer> inputList = AdventUtil.stringToIntegerList(AdventUtil.FILE_SIX, ",");
 
     public void result() {
         Map<Integer, Long> map = listToMap(inputList);

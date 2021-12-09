@@ -6,7 +6,7 @@ import java.util.*;
 
 public class DaySeven {
 
-    private List<Integer> inputList = AdventUtil.stringToIntegerList(AdventUtil.FILE_SEVEN);
+    private List<Integer> inputList = AdventUtil.stringToIntegerList(AdventUtil.FILE_SEVEN, ",");
 
     public void partOne() {
 

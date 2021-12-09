@@ -25,6 +25,7 @@ public class AdventUtil {
     public static final String FILE_SIX = SRC_PATH + "day6/input.txt";
     public static final String FILE_SEVEN = SRC_PATH + "day7/input.txt";
     public static final String FILE_EIGHT = SRC_PATH + "day8/input.txt";
+    public static final String FILE_NINE = SRC_PATH + "day9/input.txt";
 
     //2020
     public static final File FILE_ONE_2020 = new File("src/twentytwenty/firstday/input.txt");
@@ -134,7 +135,7 @@ public class AdventUtil {
         return table;
     }
 
-    public static List<Integer> stringToIntegerList(String path) {
+    public static List<Integer> stringToIntegerList(String path, String separator) {
         StringBuilder result = new StringBuilder();
         try (BufferedReader bReader = new BufferedReader(new FileReader(path))) {
             String line;
@@ -144,7 +145,7 @@ public class AdventUtil {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return Arrays.stream(result.toString().split(",")).map(Integer::parseInt).collect(Collectors.toList());
+        return Arrays.stream(result.toString().split(separator)).map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public static List<Display> inputToDisplayList(String path) {
@@ -169,12 +170,29 @@ public class AdventUtil {
                         pattern.add(String.valueOf(aux));
                     }
                 }
-                displayList.add(new Display(pattern,digit));
+                displayList.add(new Display(pattern, digit));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         return displayList;
+    }
+
+    public static Map<Integer, List<Integer>> stringToMapOfIntegerAndIntegerList(String path) {
+        Map<Integer, List<Integer>> resultMap = new HashMap<>();
+
+        try (BufferedReader bReader = new BufferedReader(new FileReader(path))) {
+            String line;
+            int index = 0;
+            while ((line = bReader.readLine()) != null) {
+                List<Integer> currentList = Arrays.stream(line.split("")).map(Integer::parseInt).collect(Collectors.toList());
+                resultMap.put(index, currentList);
+                index++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return resultMap;
     }
 
 }

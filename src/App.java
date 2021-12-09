@@ -1,4 +1,5 @@
 import twentytwentyone.day8.DayEight;
+import twentytwentyone.day9.DayNine;
 
 public class App {
 
@@ -44,6 +45,11 @@ public class App {
         //Day 8
         DayEight d8 = new DayEight();
         //d8.partOne();
-        d8.partTwo();
+        //d8.partTwo();
+
+        //Day 9
+        DayNine d9 = new DayNine();
+        //d8.partOne();
+        d9.partOne();
     }
 }
